@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sticky</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #f6f6f6;
+        border-radius: 2px;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #cdcdcd;
+        border-radius: 2px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: #747474;
+      }
+
+      ::-webkit-scrollbar-corner {
+        background: #f6f6f6;
+      }
+
+      html,
+      body {
+        width: 100%;
+      }
+
+      body {
+        min-height: 100%;
+      }
+
+      #app {
+        width: 200px;
+        margin: 100px auto;
+        height: 300px;
+        overflow: auto;
+      }
+
+      .app-menu-title {
+        position: sticky;
+        top: 0;
+        background-color: #ccc;
+      }
+
+      .app-menu-title,
+      .app-menu-content {
+        padding: 4px 8px;
+      }
+
+      .app-menu-content {
+        border-bottom: 1px solid #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div v-for="item in menu" :key="item" class="app-menu">
+        <div class="app-menu-title">{{ item }}</div>
+        <div class="app-menu-content" v-for="i in 10">{{item}}-{{ i }}</div>
+      </div>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.7.9/vue.min.js"></script>
+    <script>
+      const vm = new Vue({
+        el: "#app",
+        data() {
+          return {
+            menu: ["a", "b", "c", "d", "e", "f", "g", "h"],
+          };
+        },
+      });
+    </script>
+  </body>
+</html>
